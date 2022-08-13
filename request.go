@@ -24,7 +24,7 @@ func (c *Client) request(ctx context.Context, url string, params map[string]inte
 	client.SetP12Cert(cert)
 
 	// 发起请求
-	request, err := client.Post()
+	request, err := client.Post(ctx)
 	if err != nil {
 		return gorequest.Response{}, err
 	}
@@ -34,7 +34,7 @@ func (c *Client) request(ctx context.Context, url string, params map[string]inte
 		go c.log.GormMiddlewareXml(ctx, request, Version)
 	}
 	if c.config.MongoDb != nil {
-		go c.log.MongoMiddlewareXml(request)
+		go c.log.MongoMiddlewareXml(ctx, request, Version)
 	}
 
 	return request, err
