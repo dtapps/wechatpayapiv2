@@ -3,9 +3,10 @@ module go.dtapp.net/wechatpayapiv2
 go 1.19
 
 require (
-	go.dtapp.net/dorm v1.0.30
+	github.com/gin-gonic/gin v1.8.1
+	go.dtapp.net/dorm v1.0.32
 	go.dtapp.net/gojson v1.0.1
-	go.dtapp.net/golog v1.0.55
+	go.dtapp.net/golog v1.0.68
 	go.dtapp.net/gomd5 v1.0.1
 	go.dtapp.net/gorandom v1.0.1
 	go.dtapp.net/gorequest v1.0.28
@@ -18,7 +19,6 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.8.1 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.0 // indirect
@@ -41,7 +41,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
-	github.com/lib/pq v1.10.6 // indirect
+	github.com/lib/pq v1.10.7 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
@@ -51,13 +51,14 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/saracen/go7z v0.0.0-20191010121135-9c09b6bd7fda // indirect
 	github.com/saracen/solidblock v0.0.0-20190426153529-45df20abab6f // indirect
+	github.com/segmentio/fasthash v1.0.3 // indirect
 	github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
-	github.com/upper/db/v4 v4.5.4 // indirect
+	github.com/upper/db/v4 v4.6.0 // indirect
 	github.com/uptrace/bun v1.1.8 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.1.8 // indirect
 	github.com/uptrace/bun/dialect/pgdialect v1.1.8 // indirect
@@ -73,16 +74,15 @@ require (
 	go.dtapp.net/gotime v1.0.5 // indirect
 	go.dtapp.net/gotrace_id v1.0.6 // indirect
 	go.dtapp.net/gourl v1.0.0 // indirect
-	go.dtapp.net/goxml v1.0.1 // indirect
-	go.mongodb.org/mongo-driver v1.10.1 // indirect
+	go.mongodb.org/mongo-driver v1.10.2 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	go.uber.org/zap v1.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
+	golang.org/x/net v0.0.0-20220906165146-f3363e06e74c // indirect
 	golang.org/x/sync v0.0.0-20220819030929-7fc1605a5dde // indirect
-	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
+	golang.org/x/sys v0.0.0-20220907062415-87db552b00fd // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

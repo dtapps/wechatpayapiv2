@@ -6,7 +6,7 @@ import (
 	"go.dtapp.net/gorequest"
 )
 
-func (c *Client) request(ctx context.Context, url string, params map[string]interface{}, cert *tls.Certificate) (gorequest.Response, error) {
+func (c *Client) request(ctx context.Context, url string, params map[string]interface{}, certStatus bool, cert *tls.Certificate) (gorequest.Response, error) {
 
 	// 创建请求
 	client := c.requestClient
@@ -21,7 +21,9 @@ func (c *Client) request(ctx context.Context, url string, params map[string]inte
 	client.SetParams(params)
 
 	// 设置证书
-	client.SetP12Cert(cert)
+	if certStatus {
+		client.SetP12Cert(cert)
+	}
 
 	// 发起请求
 	request, err := client.Post(ctx)
