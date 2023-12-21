@@ -4,13 +4,10 @@ go 1.19
 
 require (
 	github.com/gin-gonic/gin v1.8.1
-	go.dtapp.net/dorm v1.0.51
-	go.dtapp.net/gojson v1.0.1
 	go.dtapp.net/golog v1.0.101
 	go.dtapp.net/gomd5 v1.0.1
 	go.dtapp.net/gorandom v1.0.1
 	go.dtapp.net/gorequest v1.0.32
-	gorm.io/datatypes v1.0.7
 )
 
 require (
@@ -26,7 +23,6 @@ require (
 	github.com/go-redis/redis/v9 v9.0.0-beta.3 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
-	github.com/golang-sql/sqlexp v0.1.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
@@ -76,6 +72,7 @@ require (
 	github.com/xdg-go/stringprep v1.0.3 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
+	go.dtapp.net/dorm v1.0.51 // indirect
 	go.dtapp.net/goip v1.0.38 // indirect
 	go.dtapp.net/gostring v1.0.10 // indirect
 	go.dtapp.net/gotime v1.0.5 // indirect
@@ -96,7 +93,7 @@ require (
 	gorm.io/driver/mysql v1.4.1 // indirect
 	gorm.io/driver/postgres v1.4.4 // indirect
 	gorm.io/gorm v1.24.0 // indirect
-	mellium.im/sasl v0.3.0 // indirect
+	mellium.im/sasl v0.3.1 // indirect
 	modernc.org/sqlite v1.18.1 // indirect
 	xorm.io/builder v0.3.12 // indirect
 	xorm.io/xorm v1.3.2 // indirect
