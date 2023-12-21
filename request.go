@@ -6,10 +6,10 @@ import (
 	"go.dtapp.net/gorequest"
 )
 
-func (c *Client) request(ctx context.Context, url string, params map[string]interface{}, certStatus bool, cert *tls.Certificate) (gorequest.Response, error) {
+func (c *Client) request(ctx context.Context, url string, param gorequest.Params, certStatus bool, cert *tls.Certificate) (gorequest.Response, error) {
 
 	// 创建请求
-	client := c.requestClient
+	client := gorequest.NewHttp()
 
 	// 设置请求地址
 	client.SetUri(url)
@@ -17,8 +17,11 @@ func (c *Client) request(ctx context.Context, url string, params map[string]inte
 	// 设置格式
 	client.SetContentTypeXml()
 
+	// 设置用户代理
+	client.SetUserAgent(gorequest.GetRandomUserAgentSystem())
+
 	// 设置参数
-	client.SetParams(params)
+	client.SetParams(param)
 
 	// 设置证书
 	if certStatus {
@@ -32,8 +35,8 @@ func (c *Client) request(ctx context.Context, url string, params map[string]inte
 	}
 
 	// 记录日志
-	if c.log.status {
-		go c.log.client.MiddlewareXml(ctx, request, Version)
+	if c.gormLog.status {
+		go c.gormLog.client.MiddlewareXml(ctx, request)
 	}
 
 	return request, err
