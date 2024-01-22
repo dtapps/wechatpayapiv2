@@ -1,5 +1,5 @@
 <h1>
-<a href="https://www.dtapp.net/">Golang </a>
+<a href="https://www.dtapp.net/">Golang</a>
 </h1>
 
 📦 Golang 微信支付V2
@@ -13,5 +13,5 @@
 #### 安装
 
 ```shell
-go get -v -u go.dtapp.net/wechatpayapiv2@v1.0.13
+go get -v -u go.dtapp.net/wechatpayapiv2@v1.0.14
 ```

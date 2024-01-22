@@ -38,6 +38,9 @@ func (c *Client) request(ctx context.Context, url string, param gorequest.Params
 	if c.gormLog.status {
 		go c.gormLog.client.MiddlewareXml(ctx, request)
 	}
+	if c.mongoLog.status {
+		go c.mongoLog.client.MiddlewareXml(ctx, request)
+	}
 
 	return request, err
 }
