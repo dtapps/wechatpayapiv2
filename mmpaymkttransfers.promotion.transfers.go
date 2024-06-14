@@ -2,7 +2,6 @@ package wechatpayapiv2
 
 import (
 	"context"
-	"encoding/xml"
 	"go.dtapp.net/gorandom"
 	"go.dtapp.net/gorequest"
 )
@@ -39,21 +38,25 @@ func newTransfersResult(result TransfersResponse, body []byte, http gorequest.Re
 // 需要证书
 // https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2
 func (c *Client) Transfers(ctx context.Context, notMustParams ...gorequest.Params) (*TransfersResult, error) {
+
+	// OpenTelemetry链路追踪
+	ctx = c.TraceStartSpan(ctx, "mmpaymkttransfers/promotion/transfers")
+	defer c.TraceEndSpan()
+
+	// 证书
 	cert, err := c.P12ToPem()
+
 	// 参数
 	params := gorequest.NewParamsWith(notMustParams...)
 	params.Set("mch_appid", c.GetAppId())
 	params.Set("mchid", c.GetMchId())
 	params.Set("nonce_str", gorandom.Alphanumeric(32))
+
 	// 签名
 	params.Set("sign", c.getMd5Sign(params))
+
 	// 	请求
-	request, err := c.request(ctx, apiUrl+"/mmpaymkttransfers/promotion/transfers", params, true, cert)
-	if err != nil {
-		return newTransfersResult(TransfersResponse{}, request.ResponseBody, request), err
-	}
-	// 定义
 	var response TransfersResponse
-	err = xml.Unmarshal(request.ResponseBody, &response)
+	request, err := c.request(ctx, "mmpaymkttransfers/promotion/transfers", params, true, cert, &response)
 	return newTransfersResult(response, request.ResponseBody, request), err
 }

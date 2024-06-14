@@ -2,7 +2,6 @@ package wechatpayapiv2
 
 import (
 	"context"
-	"encoding/xml"
 	"go.dtapp.net/gorandom"
 	"go.dtapp.net/gorequest"
 )
@@ -51,19 +50,23 @@ func newMmpaymkttransfersGethbinfoResult(result MmpaymkttransfersGethbinfoRespon
 // 现金红包 - 查询红包记录
 // https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon_sl.php?chapter=13_6&index=5
 func (c *Client) MmpaymkttransfersGethbinfo(ctx context.Context, notMustParams ...gorequest.Params) (*MmpaymkttransfersGethbinfoResult, error) {
+
+	// OpenTelemetry链路追踪
+	ctx = c.TraceStartSpan(ctx, "mmpaymkttransfers/gethbinfo")
+	defer c.TraceEndSpan()
+
+	// 证书
 	cert, err := c.P12ToPem()
+
 	// 参数
 	params := gorequest.NewParamsWith(notMustParams...)
 	params.Set("nonce_str", gorandom.Alphanumeric(32)) // 随机字符串
+
 	// 签名
 	params.Set("sign", c.getMd5Sign(params))
+
 	// 	请求
-	request, err := c.request(ctx, apiUrl+"/mmpaymkttransfers/gethbinfo", params, true, cert)
-	if err != nil {
-		return newMmpaymkttransfersGethbinfoResult(MmpaymkttransfersGethbinfoResponse{}, request.ResponseBody, request), err
-	}
-	// 定义
 	var response MmpaymkttransfersGethbinfoResponse
-	err = xml.Unmarshal(request.ResponseBody, &response)
+	request, err := c.request(ctx, "mmpaymkttransfers/gethbinfo", params, true, cert, &response)
 	return newMmpaymkttransfersGethbinfoResult(response, request.ResponseBody, request), err
 }
